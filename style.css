@@ -335,6 +335,13 @@ section {
   display: flex;
   align-items: center;
 }
+#san-bernardo { background: var(--beige); }
+#inicio { background: var(--acero); }
+#senializacion { background: var(--senial); }
+#territorio { background: var(--senial); }
+#patrones { background: var(--oxido); }
+#metodologia { background: #2E7D5B; }
+#equipo { background: #fff; }
 
 /* Colores por sección */
 #s1 { background: var(--acero); color: var(--text-light); }

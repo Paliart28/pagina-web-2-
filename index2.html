@@ -11,8 +11,7 @@
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="tren_horizontal.css">
-    <!-- Si tienes estilos específicos para San Bernardo, puedes mantener este -->
-    <!-- <link rel="stylesheet" href="estilo_mapasanbernardo.css"> -->
+   <link href="style_mapasanbernardo.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -25,8 +24,7 @@
 
         <nav class="main-nav">
             <a href="#inicio">Inicio</a>
-            <a href="#san-bernardo">Caso San Bernardo</a>
-            <a href="#senializacion">Señalización</a>
+            <a href="#san-bernardo">Caso San Bernardo</a
             <a href="#territorio">Territorio</a>
             <a href="#patrones">Patrones humanos</a>
             <a href="#metodologia">Metodología</a>
@@ -34,7 +32,7 @@
         </nav>
     </header>
 
-    <!-- BARRA DEL TREN: 7 ESTACIONES -->
+    <!-- BARRA DEL TREN: 6 ESTACIONES -->
     <div class="railway">
         <div class="railway__track">
             <div class="railway__line"></div>
@@ -42,11 +40,10 @@
 
             <button class="railway__station is-active" data-index="0" data-target="inicio" aria-label="Ir a Inicio"></button>
             <button class="railway__station" data-index="1" data-target="san-bernardo" aria-label="Ir a Caso San Bernardo"></button>
-            <button class="railway__station" data-index="2" data-target="senializacion" aria-label="Ir a Señalización"></button>
-            <button class="railway__station" data-index="3" data-target="territorio" aria-label="Ir a Territorio"></button>
-            <button class="railway__station" data-index="4" data-target="patrones" aria-label="Ir a Patrones humanos"></button>
-            <button class="railway__station" data-index="5" data-target="metodologia" aria-label="Ir a Metodología"></button>
-            <button class="railway__station" data-index="6" data-target="equipo" aria-label="Ir a Equipo"></button>
+            <button class="railway__station" data-index="2" data-target="territorio" aria-label="Ir a Territorio"></button>
+            <button class="railway__station" data-index="3" data-target="patrones" aria-label="Ir a Patrones humanos"></button>
+            <button class="railway__station" data-index="4" data-target="metodologia" aria-label="Ir a Metodología"></button>
+            <button class="railway__station" data-index="5" data-target="equipo" aria-label="Ir a Equipo"></button>
 
             <!-- Tren SVG -->
             <svg class="railway__train" id="rail-train" viewBox="0 0 80 40" aria-hidden="true">
@@ -84,28 +81,6 @@
             <span class="cita-comillas cierre">”</span>
         </div>
     </section>
-
-    <!-- SIMBOLOGÍA DE LAS VISUALIZACIONES -->
-    <section class="section light" id="simbolos">
-        <div class="section-inner">
-            <h2>Cómo leer las visualizaciones</h2>
-            <p>
-                Los gráficos de esta historia utilizan una simbología consistente con la identidad visual ferroviaria
-                definida para <strong>Punto Ciego</strong>. Cada color y forma aporta información sobre el nivel
-                de advertencia, el tipo de cruce o la gravedad de los siniestros.
-            </p>
-
-            <ul class="simbolo-lista">
-                <li><span class="dot azul"></span> <strong>Azul acero:</strong> tramos y cruces con señalización formal o control centralizado.</li>
-                <li><span class="dot oxido"></span> <strong>Naranja óxido:</strong> zonas de advertencia baja o infraestructura degradada.</li>
-                <li><span class="dot amarillo"></span> <strong>Amarillo señalética:</strong> advertencias intermedias o parcialidad en la protección.</li>
-                <li><span class="dot rojo"></span> <strong>Rojo:</strong> puntos de atropellos, siniestros graves o cruces críticos.</li>
-                <li><span class="icono-linea"></span> <strong>Líneas continuas:</strong> tramos formales de vía con control definido.</li>
-                <li><span class="icono-punteado"></span> <strong>Líneas punteadas:</strong> cruces irregulares o trazados abiertos por uso cotidiano.</li>
-            </ul>
-        </div>
-    </section>
-
   <!-- =========================
          CASO SAN BERNARDO
     ========================== -->
