@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Punto Ciego · Rieles en riesgo</title>
+    <title>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</title>
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -25,10 +25,10 @@
 
         <nav class="main-nav">
             <a href="#inicio">Inicio</a>
+            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#senializacion">Señalización</a>
             <a href="#territorio">Territorio</a>
             <a href="#patrones">Patrones humanos</a>
-            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#metodologia">Metodología</a>
             <a href="#equipo">Equipo</a>
         </nav>
@@ -105,7 +105,48 @@
             </ul>
         </div>
     </section>
+  <!-- =========================
+         CASO SAN BERNARDO
+    ========================== -->
+    <section class="section highlight" id="san-bernardo">
+        <div class="section-inner">
+            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
+            <p>
+                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
+                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
+                los patrones descritos en las secciones anteriores.
+            </p>
 
+            <div class="viz-bloque">
+                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
+                <p class="viz-desc">
+                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
+                    junto con el contexto urbano que rodea la línea férrea.
+                </p>
+                <div class="viz-contenedor">
+                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
+<aside class="hero-aside">
+
+  <!-- CONTENEDOR DEL MAPA -->
+  <div id="hero-map"></div>
+
+  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
+  <div id="hero-sidebar" class="hero-sidebar">
+    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+    <p class="hero-sidebar-text">
+      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
+      cómo la combinación de cruces a nivel, señalización vulnerable y
+      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
+      no logra anticipar el error humano: lo espera, y lo repite.
+    </p>
+    <p class="hero-sidebar-note">
+      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
+    </p>
+  </div>
+
+</aside>
+  </section>
     <!-- =========================
          CRÓNICA 1 – SISTEMA Y SEÑALIZACIÓN
     ========================== -->
@@ -140,9 +181,11 @@
                 <p class="viz-desc">
                     Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de O’Higgins, y permite observar qué tramos operan con mayor dependencia del error humano.
                 </p>
-                <!-- Reemplaza el src por el nombre real de tu archivo HTML -->
                 <div class="viz-contenedor">
                     <iframe src="graficos\andrés_vis1.html" loading="lazy"></iframe>
+                </div>
+<div class="viz-contenedor">
+                    <iframe src="graficos\andrés_vis2.html" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
@@ -266,61 +309,22 @@
             <div class="viz-bloque">
                 <h3>¿Quiénes y cuándo se exponen más al riesgo?</h3>
                 <p class="viz-desc">
-                    Estas visualizaciones muestran la concentración de siniestros por grupo etario y por horario del día,
+                    Estas visualizaciones muestran la concentración de siniestros por grupo etario y por horario y el día,
                     revelando cómo los trayectos cotidianos se cruzan con la falta de protección en las vías.
                 </p>
                 <div class="viz-contenedor">
-                    <iframe src="gráficos/edades.html" loading="lazy"></iframe>
+                    <iframe src="graficos\dias_grafico_vis6_Riquelme.html" loading="lazy"></iframe>
                 </div>
                 <div class="viz-contenedor">
-                    <iframe src="gráficos/zona horaria.html" loading="lazy"></iframe>
+                    <iframe src="graficos\franja_horaria_grafico_vis7_Riquelme.html" loading="lazy"></iframe>
+                </div>
+            </div>
+              <div class="viz-contenedor">
+                    <iframe src="graficos\edades_grafico_vis8_Riquelme.html" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- =========================
-         CASO SAN BERNARDO
-    ========================== -->
-    <section class="section highlight" id="san-bernardo">
-        <div class="section-inner">
-            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
-            <p>
-                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
-                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
-                los patrones descritos en las secciones anteriores.
-            </p>
-
-            <div class="viz-bloque">
-                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-                <p class="viz-desc">
-                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-                    junto con el contexto urbano que rodea la línea férrea.
-                </p>
-                <div class="viz-contenedor">
-                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
-<aside class="hero-aside">
-
-  <!-- CONTENEDOR DEL MAPA -->
-  <div id="hero-map"></div>
-
-  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
-  <div id="hero-sidebar" class="hero-sidebar">
-    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
-    <p class="hero-sidebar-text">
-      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-      cómo la combinación de cruces a nivel, señalización vulnerable y
-      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-      no logra anticipar el error humano: lo espera, y lo repite.
-    </p>
-    <p class="hero-sidebar-note">
-      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-    </p>
-  </div>
-
-</aside>
-  </section>
     <!-- =========================
          METODOLOGÍA
     ========================== -->
