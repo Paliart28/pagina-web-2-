@@ -1,95 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Punto Ciego – Inicio</title>
-
-  <!-- Estilos -->
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/tren_horizontal.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Rieles en riesgo · Inicio del viaje</title>
 
   <style>
-    /* Fondo inicial gris azulado */
     body {
-      background: var(--acero);
+      margin: 0;
+      background: #0f172a;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       color: white;
-      text-align: center;
-      padding-top: 160px;
       font-family: "Poppins", sans-serif;
+      overflow: hidden;
     }
 
-    h1 {
-      font-family: "Bebas Neue";
-      font-size: 60px;
-      margin-bottom: 10px;
+    /* Tren */
+    #train-start {
+      width: 180px;
+      animation: train-enter 2.5s ease-out forwards;
     }
 
-    p {
-      font-size: 18px;
-      max-width: 700px;
-      margin: 0 auto 30px;
-      opacity: 0.9;
+    @keyframes train-enter {
+      from { transform: translateX(-120vw); }
+      to   { transform: translateX(0); }
     }
 
-    .btn-inicio {
-      display: inline-block;
-      padding: 15px 28px;
-      background: var(--senial);
-      color: #000;
-      font-weight: 600;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 20px;
-      margin-top: 20px;
-      transition: 0.2s;
+    /* Botón “Iniciar viaje” */
+    .start-btn {
+      margin-top: 40px;
+      padding: 16px 32px;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background: #e63946;
+      color: white;
+      transition: 0.3s;
     }
 
-    .btn-inicio:hover {
-      background: #e4cf4d;
-    }
-
-    /* Barra + tren centrado */
-    .tren-bar-init {
-      margin: 60px auto 0;
-      width: 80%;
-      max-width: 600px;
-    }
-
-    #train-init {
-      width: 110px;
-      margin-top: -25px;
-      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.4));
+    .start-btn:hover {
+      background: #b51f2c;
+      transform: scale(1.05);
     }
   </style>
 </head>
 
 <body>
 
-  <h1>Punto Ciego</h1>
-  <p>
-    Un viaje por los riesgos invisibles en los cruces ferroviarios entre Santiago y O’Higgins.<br>
-    Señalización vulnerable, cruces irregulares, patrones temporales y fallas estructurales.
-  </p>
+  <!-- Tren centrado -->
+  <svg id="train-start" viewBox="0 0 64 40">
+    <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+    <rect x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5EAF1"/>
+    <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+    <circle cx="50" cy="22" r="2" fill="#F6E05E"/>
+    <circle cx="18" cy="32" r="5" fill="#111827"/>
+    <circle cx="38" cy="32" r="5" fill="#111827"/>
+    <circle cx="18" cy="32" r="2" fill="#9ca3af"/>
+    <circle cx="38" cy="32" r="2" fill="#9ca3af"/>
+  </svg>
 
-  <!-- Barra inicial del tren -->
-  <div class="tren-bar tren-bar-init">
-    <div id="progress"></div>
-    <img id="train-init" src="img/tren_nuevo.svg" alt="tren">
-  </div>
-
-  <!-- Botón para entrar al reportaje completo -->
-  <a href="index2.html" class="btn-inicio">Iniciar viaje</a>
-
-  <!-- JS del tren (solo movimiento visual inicial) -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      setTimeout(() => {
-        document.getElementById("progress").style.width = "100%";
-        document.getElementById("train-init").style.marginLeft = "calc(100% - 110px)";
-      }, 400);
-    });
-  </script>
+  <!-- Botón para pasar al sitio real -->
+  <button
+    class="start-btn"
+    onclick="window.location.href='index2.html'">
+    Iniciar viaje
+  </button>
 
 </body>
 </html>
