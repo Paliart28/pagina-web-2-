@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+</head>
+<body>
+<div id="vis"></div>
+<script>
+const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {"values": [
+      {"grupo":"0-14","siniestros":38960},
+      {"grupo":"15-29","siniestros":173936},
+      {"grupo":"30-44","siniestros":178636},
+      {"grupo":"45-59","siniestros":163574},
+      {"grupo":"60-74","siniestros":53543},
+      {"grupo":"75+","siniestros":13439},
+      {"grupo":"No se informa","siniestros":5326}
+  ]},
+  "mark": {"type":"bar", "cornerRadiusTopLeft":4, "cornerRadiusTopRight":4},
+  "encoding": {
+    "x": {"field":"grupo","type":"nominal","title":"Grupo etario"},
+    "y": {"field":"siniestros","type":"quantitative",
+          "title":"Siniestros 2014–2024","axis":{"format":".0f"}},
+    "color": {
+      "condition":{"test":"datum.grupo === '30-44'","value":"#F2994A"},
+      "value":"#1E3A68"
+    },
+    "tooltip":[
+      {"field":"grupo"},
+      {"field":"siniestros","format":".0f"}
+    ]
+  },
+  "width": 500,
+  "height": 350,
+  "title": "Exposición al riesgo por edad"
+};
+vegaEmbed("#vis", spec);
+</script>
+</body>
+</html>

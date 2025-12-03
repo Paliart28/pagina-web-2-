@@ -1,0 +1,58 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/vega@6.2.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.0.2"></script>
+</head>
+<body>
+<div id="vis"></div>
+<script>
+const spec = {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "#E5EAF1",
+  "data": {"values": [
+      {"dia": "Domingo", "siniestros": 99394, "nivel": "Baja incidencia"},
+      {"dia": "Jueves", "siniestros": 124450, "nivel": "Incidencia media"},
+      {"dia": "Lunes", "siniestros": 123440, "nivel": "Incidencia media"},
+      {"dia": "Martes", "siniestros": 118970, "nivel": "Incidencia media"},
+      {"dia": "Miércoles", "siniestros": 125210, "nivel": "Alta incidencia"},
+      {"dia": "Sábado", "siniestros": 116062, "nivel": "Baja incidencia"},
+      {"dia": "Viernes", "siniestros": 129578, "nivel": "Alta incidencia"}
+  ]},
+  "mark": "bar",
+  "encoding": {
+    "y": {
+      "field": "dia",
+      "type": "nominal",
+      "sort": ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],
+      "title": ""
+    },
+    "x": {
+      "field": "siniestros",
+      "type": "quantitative",
+      "title": "Total de siniestros (2014–2024)",
+      "axis": {"format": ".0f"}
+    },
+    "color": {
+      "field": "nivel",
+      "type": "nominal",
+      "scale": {"domain": ["Baja incidencia","Incidencia media","Alta incidencia"],
+                "range": ["#1E3A68","#2E7D5B","#F2994A"]},
+      "title": "Nivel de riesgo"
+    },
+    "tooltip": [
+      {"field": "dia"},
+      {"field": "siniestros","format": ".0f"},
+      {"field": "nivel"}
+    ]
+  },
+  "height": 350,
+  "width": 600,
+  "title": "Riesgo ferroviario por día de la semana"
+};
+vegaEmbed("#vis", spec);
+</script>
+</body>
+</html>
