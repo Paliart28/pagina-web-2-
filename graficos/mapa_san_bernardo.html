@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mapa San Bernardo</title>
+
+<!-- Leaflet -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+  }
+  #map {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+</head>
+
+<body>
+<div id="map"></div>
+
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+// Coordenadas del accidente en San Bernardo (ajústalas si tienes otras)
+const punto = [-33.59327, -70.69954];
+
+// Crear mapa
+const map = L.map('map').setView(punto, 16);
+
+// Capa base (Estilo limpio OSM)
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 19,
+  attribution: '&copy; OpenStreetMap'
+}).addTo(map);
+
+// Marcador rojo
+L.circleMarker(punto, {
+  radius: 10,
+  color: "#D90429",
+  fillColor: "#D90429",
+  fillOpacity: 0.9
+})
+.bindPopup("Ubicación del siniestro en San Bernardo")
+.addTo(map);
+
+// Zoom control visible
+L.control.zoom({
+  position: 'topright'
+}).addTo(map);
+</script>

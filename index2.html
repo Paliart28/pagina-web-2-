@@ -125,6 +125,10 @@
 
   <!-- CONTENEDOR DEL MAPA -->
   <div id="hero-map"></div>
+<iframe 
+    src="graficos/mapa_san_bernardo.html"
+    style="width:100%; height:450px; border:none; border-radius:12px; overflow:hidden;">
+</iframe>
 
   <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
   <div id="hero-sidebar" class="hero-sidebar">
@@ -361,80 +365,6 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
 
-<!-- Mapa San Bernardo -->
-<script>
-// Crear mapa estilo “Google Maps” pero minimalista
-var map = L.map('hero-map', {
-  zoomControl: true,
-  dragging: true,
-  scrollWheelZoom: true,
-  doubleClickZoom: true,
-  touchZoom: true
-}).setView([-33.6069, -70.7040], 14);
 
-// Capa base
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  opacity: 0.45
-}).addTo(map);
-
-// Estaciones aproximadas del tramo
-var estaciones = [
-  [-33.4513, -70.6797],
-  [-33.4660, -70.6899],
-  [-33.4919, -70.6951],
-  [-33.5150, -70.6988],
-  [-33.5465, -70.7000],
-  [-33.5866, -70.6980],
-  [-33.5994, -70.7009],
-  [-33.6183, -70.7072],
-  [-33.6378, -70.7189],
-  [-34.1701, -70.7444]
-];
-
-L.polyline(estaciones, {
-  color: "#D90429",
-  weight: 5,
-  opacity: 0.85
-}).addTo(map);
-
-// Estaciones como puntos
-estaciones.forEach(coord => {
-  L.circleMarker(coord, {
-    radius: 5,
-    fillColor: "#FFFFFF",
-    color: "#111827",
-    weight: 1,
-    fillOpacity: 1
-  }).addTo(map);
-});
-
-// Punto del accidente (estático)
-var accidente = [-33.6069, -70.7040];
-var accMarker = L.circleMarker(accidente, {
-  radius: 12,
-  fillColor: "#D90429",
-  color: "#FFFFFF",
-  weight: 3,
-  fillOpacity: 1
-}).addTo(map);
-
-// Toggle del panel al hacer clic
-accMarker.on("click", function() {
-  const panel = document.getElementById("hero-sidebar");
-
-  if (!panel) return;
-
-  // Si está visible → esconder
-  if (panel.classList.contains("show")) {
-    panel.classList.remove("show");
-    return;
-  }
-
-  // Si está oculto → mostrar y hacer zoom
-  panel.classList.add("show");
-
-  L.esri.basemapLayer("Imagery").addTo(map);
-  map.flyTo(accidente, 16, { duration: 1.5 });
-});
 </body>
 </html>
