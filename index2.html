@@ -47,7 +47,50 @@
             <a href="#equipo">Equipo</a>
         </nav>
     </header>
+ <!-- Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
 
+<!-- ======================
+     BARRA DEL TREN
+====================== -->
+<div class="railway">
+  <div class="railway__inner">
+    <nav class="railway__labels">
+      <a class="label is-active" data-index="0" href="#s1">Inicio</a>
+      <a class="label" data-index="1" href="#s2">Santiago</a>
+      <a class="label" data-index="2" href="#s3">Días y edad</a>
+      <a class="label" data-index="3" href="#s4">Zonas</a>
+      <a class="label" data-index="4" href="#s5">Metodología</a>
+    </nav>
+
+    <div class="track">
+      <div class="track__progress" id="progress"></div>
+
+      <div class="station station--1" data-index="0"></div>
+      <div class="station station--2" data-index="1"></div>
+      <div class="station station--3" data-index="2"></div>
+      <div class="station station--4" data-index="3"></div>
+      <div class="station station--5" data-index="4"></div>
+      <div class="station station--5" data-index="5"></div>
+      <div class="station station--5" data-index="6"></div>
+      
+
+      <!-- Tren -->
+      <svg class="train" id="train" viewBox="0 0 64 40">
+        <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+        <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+        <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#E5E05E"/>
+        <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+        <circle cx="18" cy="32" r="5" fill="#111827"/>
+        <circle cx="38" cy="32" r="5" fill="#111827"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<main>
     <!-- HERO / INTRO -->
     <section class="hero-story" id="inicio">
         <div class="hero-inner">
@@ -512,5 +555,11 @@
     })();
     </script>
 
+<!-- Scripts -->
+<script src="tren_horizontal.js"></script>
+
+<!-- Leaflet -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
 </body>
 </html>
