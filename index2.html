@@ -3,28 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Más allá de la imprudencia: Las fallas estructurales detrás de los atropellos ferroviarios</title>
+    <title>Punto Ciego · Rieles en riesgo</title>
 
     <!-- Fuentes -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
-
-    <!-- Leaflet para mapa interactivo de San Bernardo -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
-    <script
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin="">
-    </script>
-    <script src="https://unpkg.com/esri-leaflet@3.0.8/dist/esri-leaflet.js"></script>
-
+    <link rel="stylesheet" href="tren_horizontal.css">
     <!-- Si tienes estilos específicos para San Bernardo, puedes mantener este -->
     <!-- <link rel="stylesheet" href="estilo_mapasanbernardo.css"> -->
 </head>
@@ -33,25 +19,59 @@
     <!-- HEADER FIJO CON LOGO + MENÚ -->
     <header class="main-header">
         <div class="header-logo">
-            <img src="foto logo.png" alt="Logo Punto Ciego">
+            <img src="logo_punto_ciego.png" alt="Logo Punto Ciego">
             <span class="brand-text">Punto Ciego</span>
         </div>
 
         <nav class="main-nav">
             <a href="#inicio">Inicio</a>
-            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#sistema">Señalización</a>
             <a href="#territorio">Territorio</a>
             <a href="#patrones">Patrones humanos</a>
+            <a href="#san-bernardo">Caso San Bernardo</a>
             <a href="#metodologia">Metodología</a>
             <a href="#equipo">Equipo</a>
         </nav>
     </header>
- <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-</head>
-<body>
-<main>
+
+    <!-- BARRA SUPERIOR DEL TREN - 7 ESTACIONES -->
+    <div class="railway">
+        <div class="railway__inner">
+            <nav class="railway__labels">
+                <a class="label is-active" data-index="0" href="#inicio">Inicio</a>
+                <a class="label" data-index="1" href="#sistema">Señalización</a>
+                <a class="label" data-index="2" href="#territorio">Territorio</a>
+                <a class="label" data-index="3" href="#patrones">Patrones humanos</a>
+                <a class="label" data-index="4" href="#san-bernardo">Caso San Bernardo</a>
+                <a class="label" data-index="5" href="#metodologia">Metodología</a>
+                <a class="label" data-index="6" href="#equipo">Equipo</a>
+            </nav>
+
+            <div class="track">
+                <div class="track__progress" id="progress"></div>
+
+                <div class="station station--1" data-index="0"></div>
+                <div class="station station--2" data-index="1"></div>
+                <div class="station station--3" data-index="2"></div>
+                <div class="station station--4" data-index="3"></div>
+                <div class="station station--5" data-index="4"></div>
+                <div class="station station--6" data-index="5"></div>
+                <div class="station station--7" data-index="6"></div>
+
+                <!-- Tren SVG similar al ejemplo -->
+                <svg class="train" id="train" viewBox="0 0 64 40" aria-hidden="true">
+                    <rect x="0" y="28" width="64" height="4" fill="#E5EAF1"/>
+                    <rect class="train-body" x="6" y="6" rx="6" ry="6" width="46" height="22" fill="#1E3A68"/>
+                    <rect x="14" y="10" rx="3" ry="3" width="22" height="8" fill="#F6E05E"/>
+                    <rect x="38" y="10" rx="2" ry="2" width="10" height="8" fill="#F6E05E"/>
+                    <circle cx="18" cy="32" r="5" fill="#111827"/>
+                    <circle cx="38" cy="32" r="5" fill="#111827"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+
     <!-- HERO / INTRO -->
     <section class="hero-story" id="inicio">
         <div class="hero-inner">
@@ -64,51 +84,6 @@
             </p>
         </div>
     </section>
-
-<!-- =========================
-         CASO SAN BERNARDO
-    ========================== -->
-    <section class="section highlight" id="san-bernardo">
-        <div class="section-inner">
-            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
-            <p>
-                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
-                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
-                los patrones descritos en las secciones anteriores.
-            </p>
-
-            <div class="viz-bloque">
-                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
-                <p class="viz-desc">
-                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
-                    junto con el contexto urbano que rodea la línea férrea.
-                </p>
-                <div class="viz-contenedor">
-                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
-<aside class="hero-aside">
-
-  <!-- CONTENEDOR DEL MAPA -->
-  <div id="hero-map"></div>
-
-  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
-  <div id="hero-sidebar" class="hero-sidebar">
-    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
-    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
-    <p class="hero-sidebar-text">
-      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
-      cómo la combinación de cruces a nivel, señalización vulnerable y
-      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
-      no logra anticipar el error humano: lo espera, y lo repite.
-    </p>
-    <p class="hero-sidebar-note">
-      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
-    </p>
-  </div>
-
-</aside>
-  </section>
-
-
 
     <!-- CITA DESTACADA ESTILO DIARIO -->
     <section class="cita-destacada">
@@ -139,14 +114,7 @@
                 <li><span class="icono-linea"></span> <strong>Líneas continuas:</strong> tramos formales de vía con control definido.</li>
                 <li><span class="icono-punteado"></span> <strong>Líneas punteadas:</strong> cruces irregulares o trazados abiertos por uso cotidiano.</li>
             </ul>
-        
-            <div class="signal-gallery">
-                <figure>
-                    <img src="Captura de pantalla 2025-11-15 102859.png" alt="Señal ferroviaria de advertencia">
-                    <figcaption>Señalética ferroviaria utilizada en cruces a nivel.</figcaption>
-                </figure>
-            </div>
-</div>
+        </div>
     </section>
 
     <!-- =========================
@@ -181,18 +149,12 @@
             <div class="viz-bloque">
                 <h3>Distribución de sistemas AUV y CTC en el tramo estudiado</h3>
                 <p class="viz-desc">
-                    Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de Maule, y permite observar qué tramos operan con mayor dependencia del error humano.
+                    Este gráfico muestra cómo se distribuyen los sistemas de señalización AUV y CTC en el tramo entre Estación Central y la Región de O’Higgins, y permite observar qué tramos operan con mayor dependencia del error humano.
                 </p>
+                <!-- Reemplaza el src por el nombre real de tu archivo HTML -->
                 <div class="viz-contenedor">
                     <iframe src="graficos\andrés_vis1.html" loading="lazy"></iframe>
                 </div>
-                <div class="viz-bloque">
-                <h3>Accidentes por región</h3>
-                <p class="viz-desc">
-                <div class="viz-contenedor">
-                    <iframe src="graficos\andrés_vis2.html" loading="lazy"></iframe>
-                </div>
-                
             </div>
         </div>
     </section>
@@ -271,80 +233,6 @@
     })(vegaEmbed);
 
   </script>
-
-    <!-- Mapa interactivo San Bernardo -->
-    <script>
-    (function() {
-      var mapEl = document.getElementById('hero-map');
-      if (!mapEl || typeof L === 'undefined') return;
-
-      var map = L.map('hero-map', {
-        zoomControl: true,
-        dragging: true,
-        scrollWheelZoom: true,
-        doubleClickZoom: true,
-        touchZoom: true
-      }).setView([-33.6069, -70.7040], 14);
-
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        opacity: 0.45
-      }).addTo(map);
-
-      var estaciones = [
-        [-33.4513, -70.6797],
-        [-33.4660, -70.6899],
-        [-33.4919, -70.6951],
-        [-33.5150, -70.6988],
-        [-33.5465, -70.7000],
-        [-33.5866, -70.6980],
-        [-33.5994, -70.7009],
-        [-33.6183, -70.7072],
-        [-33.6378, -70.7189],
-        [-34.1701, -70.7444]
-      ];
-
-      L.polyline(estaciones, {
-        color: "#D90429",
-        weight: 5,
-        opacity: 0.85
-      }).addTo(map);
-
-      estaciones.forEach(function(coord) {
-        L.circleMarker(coord, {
-          radius: 5,
-          fillColor: "#FFFFFF",
-          color: "#111827",
-          weight: 1,
-          fillOpacity: 1
-        }).addTo(map);
-      });
-
-      var accidente = [-33.6069, -70.7040];
-      var accMarker = L.circleMarker(accidente, {
-        radius: 12,
-        fillColor: "#D90429",
-        color: "#FFFFFF",
-        weight: 3,
-        fillOpacity: 1
-      }).addTo(map);
-
-      accMarker.on("click", function() {
-        var panel = document.getElementById("hero-sidebar");
-        if (!panel) return;
-
-        if (panel.classList.contains("show")) {
-          panel.classList.remove("show");
-        } else {
-          panel.classList.add("show");
-          if (L && L.esri && L.esri.basemapLayer) {
-            L.esri.basemapLayer("Imagery").addTo(map);
-          }
-          map.flyTo(accidente, 16, { duration: 1.5 });
-        }
-      });
-    })();
-    </script>
-
 </body>
 </html>
       </div>
@@ -391,21 +279,57 @@
                     revelando cómo los trayectos cotidianos se cruzan con la falta de protección en las vías.
                 </p>
                 <div class="viz-contenedor">
-                    <iframe src="graficos\edades_grafico_vis8_Riquelme.html" loading="lazy"></iframe>
+                    <iframe src="gráficos/edades.html" loading="lazy"></iframe>
                 </div>
                 <div class="viz-contenedor">
-                    <iframe src="graficos\franja_horaria_grafico_vis7_Riquelme.html" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
-         <div class="viz-contenedor">
-                    <iframe src="graficos\dias_grafico_vis6_Riquelme.html" loading="lazy"></iframe>
+                    <iframe src="gráficos/zona horaria.html" loading="lazy"></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    
+    <!-- =========================
+         CASO SAN BERNARDO
+    ========================== -->
+    <section class="section highlight" id="san-bernardo">
+        <div class="section-inner">
+            <h2>Caso San Bernardo: cuando los patrones se vuelven tragedia</h2>
+            <p>
+                San Bernardo concentra uno de los casos emblemáticos del tramo estudiado. Aquí confluyen
+                alta circulación peatonal, cruces irregulares y fallas en la señalización que reflejan
+                los patrones descritos en las secciones anteriores.
+            </p>
+
+            <div class="viz-bloque">
+                <h3>Mapa interactivo del siniestro en San Bernardo</h3>
+                <p class="viz-desc">
+                    El mapa permite explorar la ubicación del siniestro, el trazado de la vía y los cruces cercanos,
+                    junto con el contexto urbano que rodea la línea férrea.
+                </p>
+                <div class="viz-contenedor">
+                    <!-- ASIDE DEL HERO: MAPA + PANEL -->
+<aside class="hero-aside">
+
+  <!-- CONTENEDOR DEL MAPA -->
+  <div id="hero-map"></div>
+
+  <!-- PANEL QUE SE ABRE AL CLIC EN EL MARCADOR -->
+  <div id="hero-sidebar" class="hero-sidebar">
+    <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+    <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+    <p class="hero-sidebar-text">
+      En 2024, un siniestro fatal en San Bernardo volvió a mostrar
+      cómo la combinación de cruces a nivel, señalización vulnerable y
+      alta circulación peatonal deja puntos ciegos donde el sistema ferroviario
+      no logra anticipar el error humano: lo espera, y lo repite.
+    </p>
+    <p class="hero-sidebar-note">
+      Haz click sobre el marcador rojo del mapa para abrir o cerrar este recuadro.
+    </p>
+  </div>
+
+</aside>
+  </section>
     <!-- =========================
          METODOLOGÍA
     ========================== -->
@@ -442,79 +366,5 @@
         </div>
     </section>
 
-
-    <!-- Mapa interactivo San Bernardo -->
-    <script>
-    (function() {
-      var mapEl = document.getElementById('hero-map');
-      if (!mapEl || typeof L === 'undefined') return;
-
-      var map = L.map('hero-map', {
-        zoomControl: true,
-        dragging: true,
-        scrollWheelZoom: true,
-        doubleClickZoom: true,
-        touchZoom: true
-      }).setView([-33.6069, -70.7040], 14);
-
-      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        opacity: 0.45
-      }).addTo(map);
-
-      var estaciones = [
-        [-33.4513, -70.6797],
-        [-33.4660, -70.6899],
-        [-33.4919, -70.6951],
-        [-33.5150, -70.6988],
-        [-33.5465, -70.7000],
-        [-33.5866, -70.6980],
-        [-33.5994, -70.7009],
-        [-33.6183, -70.7072],
-        [-33.6378, -70.7189],
-        [-34.1701, -70.7444]
-      ];
-
-      L.polyline(estaciones, {
-        color: "#D90429",
-        weight: 5,
-        opacity: 0.85
-      }).addTo(map);
-
-      estaciones.forEach(function(coord) {
-        L.circleMarker(coord, {
-          radius: 5,
-          fillColor: "#FFFFFF",
-          color: "#111827",
-          weight: 1,
-          fillOpacity: 1
-        }).addTo(map);
-      });
-
-      var accidente = [-33.6069, -70.7040];
-      var accMarker = L.circleMarker(accidente, {
-        radius: 12,
-        fillColor: "#D90429",
-        color: "#FFFFFF",
-        weight: 3,
-        fillOpacity: 1
-      }).addTo(map);
-
-      accMarker.on("click", function() {
-        var panel = document.getElementById("hero-sidebar");
-        if (!panel) return;
-
-        if (panel.classList.contains("show")) {
-          panel.classList.remove("show");
-        } else {
-          panel.classList.add("show");
-          if (L && L.esri && L.esri.basemapLayer) {
-            L.esri.basemapLayer("Imagery").addTo(map);
-          }
-          map.flyTo(accidente, 16, { duration: 1.5 });
-        }
-      });
-    })();
-    </script>
-
-<!-- Scripts -->
-<script src="tren_horizontal.js"></script>
+</body>
+</html>

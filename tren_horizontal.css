@@ -1,78 +1,168 @@
-/* ===========================================================
-   TREN ANIMADO — PUNTO CIEGO
-   (CSS FINAL, OPTIMIZADO Y PROFESIONAL)
-=========================================================== */
 
-/* CONTENEDOR GENERAL */
-.tren-bar {
-  position: relative;
-  width: 100%;
-  height: 14px;
-  background: #0f223d;
-  border-top: 3px solid #122c50;
-  border-bottom: 3px solid #122c50;
-  overflow: hidden;
+:root {
+  --bar-h: 80px;
+  --track-h: 6px;
+
+  --acero: #1E3A68;
+  --senal: #F6E05E;
+  --oxido: #F2994A;
+  --verde: #2E7D5B;
+  --gris: #E5EAF1;
 }
 
-/* LÍNEA DE PROGRESO */
-#progress {
-  position: absolute;
-  top: 0;
+/* =============================
+   BARRA SUPERIOR DEL TREN
+============================= */
+.railway {
+  position: fixed;
+  top: 70px; /* debajo del header principal */
   left: 0;
-  height: 100%;
-  width: 0%;
-  background: var(--senial);
-  transition: width 0.4s ease;
-  z-index: 2;
+  width: 100%;
+  height: var(--bar-h);
+  background: linear-gradient(to bottom, rgba(17,24,39,0.96), rgba(15,23,42,0.98));
+  box-shadow: 0 4px 10px rgba(0,0,0,0.45);
+  z-index: 900;
+  display: flex;
+  align-items: center;
 }
 
-/* TREN */
-#train {
+.railway__inner {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: grid;
+  grid-template-columns: 1.8fr 2fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.railway__labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
+
+.railway__labels .label {
+  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  color: #E5EAF1;
+  border: 1px solid rgba(148,163,184,0.5);
+  background: rgba(15,23,42,0.6);
+  transition: all 0.25s ease;
+}
+
+.railway__labels .label:hover {
+  background: rgba(148,163,184,0.25);
+  border-color: rgba(226,232,240,0.7);
+}
+
+.railway__labels .label.is-active {
+  background: var(--oxido);
+  color: #111827;
+  border-color: transparent;
+}
+
+/* Pista del tren */
+.track {
+  position: relative;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.track::before {
+  content: "";
   position: absolute;
-  top: -24px;
-  left: 0%;
-  width: 70px;
-  transition: left 0.4s ease;
-  z-index: 5;
-
-  /* Sombra elegante */
-  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.3));
+  left: 4%;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--track-h);
+  background: linear-gradient(to right, #E5EAF1, #CBD5F5);
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px rgba(15,23,42,0.35);
 }
 
-/* ESTACIONES / PUNTOS */
+.track__progress {
+  position: absolute;
+  left: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: var(--track-h);
+  width: 0;
+  background: linear-gradient(to right, var(--senal), var(--oxido));
+  border-radius: 999px;
+  z-index: 1;
+  transition: width 0.4s ease-out;
+}
+
+/* Estaciones */
 .station {
-  position: absolute;
-  top: 2px;
-  width: 10px;
-  height: 10px;
-  background: #c8d3e2;
-  border-radius: 50%;
-  transform: translateX(-50%);
-  transition: background .3s ease, transform .2s ease;
-  z-index: 3;
-}
-
-.station.is-active {
-  background: var(--senial);
-  transform: translateX(-50%) scale(1.25);
-  box-shadow: 0 0 10px var(--senial);
-}
-
-/* LABELS (los nombres de las estaciones) */
-.label {
+  position: relative;
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: #0B1120;
+  border: 2px solid #E5EAF1;
+  box-shadow: 0 0 0 2px rgba(15,23,42,0.9);
   cursor: pointer;
-  font-weight: 600;
-  color: var(--gris);
-  transition: color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.label.is-active {
-  color: var(--senial);
+.station.active {
+  background: var(--oxido);
+  border-color: #111827;
 }
 
-/* RESPONSIVE */
+/* Tren */
+.train {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -70%);
+  width: 56px;
+  height: 38px;
+  z-index: 3;
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.5));
+}
+
+.train-body {
+  stroke: #F9FAFB;
+  stroke-width: 1.2;
+}
+
+/* ==== Responsive barra tren ==== */
 @media (max-width: 900px) {
-  #train {
-    display: none; /* el tren desaparece para no tapar nada */
+  .railway {
+    top: 64px;
+    height: auto;
+    padding: 0.4rem 0;
+  }
+
+  .railway__inner {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 0 1rem;
+  }
+
+  .track {
+    height: 30px;
+  }
+
+  .train {
+    width: 46px;
+    height: 30px;
+  }
+
+  .railway__labels .label {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
   }
 }

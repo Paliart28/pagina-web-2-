@@ -495,138 +495,42 @@ body {
 }
 
 
-/* =========================================
-   CASO SAN BERNARDO · MAPA + PANEL
-========================================= */
 
-#san-bernardo .viz-contenedor {
-    display: grid;
-    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-    gap: 24px;
-    align-items: stretch;
-    margin-top: 20px;
+/* =============================
+   Colores de fondo por sección
+   (paleta identidad visual)
+============================= */
+.hero-story#inicio {
+    background: var(--azul-acero);
+    color: var(--texto-claro);
 }
 
-.hero-aside {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+.section#sistema {
+    background: #E5EAF1; /* gris industria */
+    color: var(--texto);
 }
 
-#hero-map {
-    width: 100%;
-    min-height: 260px;
-    height: 320px;
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-}
-
-/* Panel que se despliega al hacer clic en el punto rojo */
-.hero-sidebar {
-    display: none;
-    background: #ffffff;
+.section#territorio {
+    background: var(--senial); /* amarillo señalética */
     color: #111827;
-    border-radius: 12px;
-    padding: 18px 20px;
-    border-left: 4px solid var(--rojo);
-    box-shadow: 0 3px 14px rgba(0,0,0,0.16);
-    font-size: 0.95rem;
 }
 
-.hero-sidebar.show {
-    display: block;
+.section#patrones {
+    background: var(--oxido); /* naranja óxido */
+    color: #111827;
 }
 
-.hero-sidebar-kicker {
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    font-size: 0.72rem;
-    opacity: 0.75;
-    margin-bottom: 4px;
+.section#san-bernardo {
+    background: var(--beige); /* beige ferroviario */
+    color: var(--texto);
 }
 
-.hero-sidebar-title {
-    font-family: "Bebas Neue", sans-serif;
-    letter-spacing: 0.06em;
-    font-size: 1.5rem;
-    margin: 4px 0 8px;
+.section#metodologia {
+    background: #2E7D5B; /* verde industrial */
+    color: var(--texto-claro);
 }
 
-.hero-sidebar-text {
-    line-height: 1.6;
-    margin-bottom: 8px;
-}
-
-.hero-sidebar-note {
-    font-size: 0.8rem;
-    opacity: 0.8;
-}
-
-/* Responsive San Bernardo */
-@media (max-width: 900px) {
-    #san-bernardo .viz-contenedor {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* =========================================
-   GALERÍA DE SEÑALES (ADORNOS VISUALES)
-========================================= */
-
-.signal-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.signal-gallery figure {
-    margin: 0;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.signal-gallery img {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
-
-.signal-gallery figcaption {
-    margin-top: 6px;
-    font-size: 0.75rem;
-    text-align: center;
-    color: #4b5563;
-}
-
-/* Ajustes extra para iframes de visualizaciones grandes */
-.viz-bloque iframe,
-.viz-contenedor iframe {
-    width: 100%;
-    border: none;
-    border-radius: 14px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.14);
-}
-
-.viz-bloque iframe {
-    min-height: 520px;
-}
-
-@media (min-width: 1400px) {
-    .viz-bloque iframe {
-        min-height: 640px;
-    }
-}
-
-@media (max-width: 768px) {
-    .viz-bloque iframe {
-        min-height: 620px;
-    }
+.section#equipo {
+    background: #FFFFFF;
+    color: var(--texto);
 }
