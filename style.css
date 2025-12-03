@@ -317,9 +317,6 @@ body {
     top: auto;
 }
 
-/* =========================================
-   SECCIONES GENERALES
-========================================= */
 /* ===========================================================
    SECCIONES FULLSCREEN
 =========================================================== */
@@ -358,46 +355,6 @@ section {
   padding: 0 5rem;
   margin: 0 auto;
 }
-/* =========================================
-   SIMBOLOGÍA
-========================================= */
-
-.simbolo-lista {
-    list-style: none;
-    margin-top: 18px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 12px 24px;
-    font-size: 0.98rem;
-}
-
-.dot {
-    display: inline-block;
-    width: 14px;
-    height: 14px;
-    border-radius: 999px;
-    margin-right: 8px;
-}
-
-.dot.azul { background: var(--azul-acero); }
-.dot.oxido { background: var(--oxido); }
-.dot.amarillo { background: var(--senial); }
-.dot.rojo { background: var(--rojo); }
-
-.icono-linea,
-.icono-punteado {
-    display: inline-block;
-    width: 36px;
-    height: 4px;
-    margin-right: 8px;
-    background: var(--azul-acero);
-}
-
-.icono-punteado {
-    background-image: linear-gradient(90deg, var(--azul-acero) 40%, transparent 40%);
-    background-size: 10px 4px;
-}
-
 /* =========================================
    CRÓNICAS
 ========================================= */
@@ -497,4 +454,35 @@ section {
     .viz-contenedor iframe {
         height: 520px;
     }
+}
+/* Hacer que el hero crezca con el contenido */
+#s1 .container {
+  display: block !important;
+}
+
+#hero-sidebar {
+  position: relative;
+  z-index: 5;
+}
+/*Asegurar que la sección del hero NO colapse */
+#s1 {
+  display: block !important;
+  min-height: 100vh !important;
+}
+
+/*Asegurar que el aside tenga altura y no colapse el mapa */
+.hero-aside {
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  min-height: 260px !important;
+}
+
+/* El mapa SIEMPRE visible */
+#hero-map {
+  display: block !important;
+  height: 260px !important;
+  min-height: 260px !important;
+  width: 100% !important;
+  z-index: 5;
 }
