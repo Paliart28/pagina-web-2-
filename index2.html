@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto Ciego – Reportaje Completo</title>
+
+  <!-- Tipografías -->
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style_mapasanbernardo.css">
+  <link rel="stylesheet" href="css/tren_horizontal.css">
+
+  <!-- Leaflet para el mapa -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR + TREN SINCRONIZADO
+===================================================== -->
+<nav class="topnav">
+  <ul>
+    <li class="label">Infraestructura</li>
+    <li class="label">Desigualdad</li>
+    <li class="label">Patrones</li>
+    <li class="label">Edades</li>
+    <li class="label">Metodología</li>
+  </ul>
+
+  <div class="tren-bar">
+    <div id="progress"></div>
+    <img id="train" src="img/tren_nuevo.svg" alt="tren">
+  </div>
+</nav>
+
+
+<main>
+
+<!-- =====================================================
+     HERO — TÍTULO + FOTO + MAPA SAN BERNARDO
+===================================================== -->
+<section class="hero-reportaje">
+
+  <div class="hero-texto">
+    <h1 class="hero-titulo">Punto Ciego: los riesgos invisibles en la vía férrea</h1>
+
+    <p class="hero-bajada">
+      Entre Estación Central y O’Higgins, la convivencia entre trenes, cruces informales,
+      señalización vulnerable y fallas estructurales genera zonas de riesgo persistentes
+      que permanecen invisibles para la discusión pública.
+    </p>
+  </div>
+
+  <div class="hero-grid">
+
+    <!-- Foto accidente -->
+    <img src="img/imagen.png" class="hero-foto" alt="Accidente San Bernardo">
+
+    <!-- Mapa -->
+    <div class="hero-mapa">
+      <div id="hero-map"></div>
+
+      <div id="hero-sidebar" class="hero-sidebar">
+        <p class="hero-sidebar-kicker">Caso San Bernardo · 2024</p>
+        <h3 class="hero-sidebar-title">Un accidente que encendió las alarmas</h3>
+        <p class="hero-sidebar-text">
+          Un siniestro fatal volvió a evidenciar puntos ciegos donde el sistema ferroviario 
+          no logra anticipar el error humano. Cruces a nivel, señalización vulnerable y alta 
+          circulación peatonal reconstruyen un patrón que se repite en toda la red.
+        </p>
+        <p class="hero-sidebar-note">
+          Haz click en el marcador rojo del mapa para abrir este panel.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     JS DEL MAPA SAN BERNARDO
+===================================================== -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const map = L.map("hero-map", {
+      zoomControl: false,
+      attributionControl: false
+    }).setView([-33.594, -70.704], 13);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      maxZoom: 19
+    }).addTo(map);
+
+    const accidente = [-33.594, -70.704];
+
+    const marker = L.circleMarker(accidente, {
+      radius: 10,
+      color: "#D90429",
+      weight: 3,
+      fillColor: "#F6E05E",
+      fillOpacity: 0.9,
+      className: "pulse-marker"
+    }).addTo(map);
+
+    const panel = document.getElementById("hero-sidebar");
+
+    marker.on("click", () => {
+      panel.classList.toggle("show");
+    });
+
+  });
+</script>
+<!-- =====================================================
+     SECCIÓN 1 — INFRAESTRUCTURA
+===================================================== -->
+<section class="seccion infraestructura" id="infraestructura">
+
+  <h2 class="titulo-seccion">1. Infraestructura ferroviaria y señalización</h2>
+
+  <div class="contenido-seccion grid-2cols">
+
+    <!-- TEXTO -->
+    <div class="col-texto">
+      <p class="cronica-tag">Crónica 1 · Integrante: Andrés Hernández</p>
+
+      <p>
+        Todos los años mueren personas atropelladas en las vías férreas de nuestro país. 
+        Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias 
+        del peatón involucradas, sino también fallas estructurales del sistema ferroviario chileno, 
+        como un sistema de señalización poco seguro para evitar siniestros.
+      </p>
+
+      <p>
+        Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en 
+        siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, 
+        O'Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados 
+        en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la 
+        <strong>Autorización de Uso de Vía (AUV)</strong> y el 
+        <strong>Control de Tráfico Centralizado (CTC)</strong>.
+      </p>
+
+      <p>
+        AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. 
+        Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye 
+        puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. 
+        El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice 
+        el movimiento del tren. <em>—EFE, 2024</em>
+      </p>
+
+      <p>
+        El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida 
+        por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridas, 
+        reposan en su estado más restrictivo: luces rojas o amarillas, según corresponda. <em>—EFE, 2024</em>
+      </p>
+
+      <p>
+        Ambos sistemas presentan debilidades para prevenir atropellos. En el caso de AUV, existe una alta dependencia 
+        del error humano y falta de automatización. El sistema CTC, aunque más avanzado, opera con limitaciones técnicas 
+        relevantes, incluyendo fallas por vandalización de cables y degradación eléctrica.
+      </p>
+
+      <blockquote class="cita">
+        “La delincuencia organizada que roba impunemente catenaria y cables subterráneos del sistema de señalización 
+        obliga a emplear sistemas radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas.”
+        <br><span>—Instituto Ferroviario Chileno</span>
+      </blockquote>
+    </div>
+
+    <!-- GRÁFICOS -->
+    <div class="col-graficos">
+
+      <!-- Primer gráfico -->
+      <iframe 
+        src="graficos/andres_vis1.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+      <!-- Segundo gráfico -->
+      <iframe 
+        src="graficos/andres_vis2.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =====================================================
+     SECCIÓN 1 — INFRAESTRUCTURA
+===================================================== -->
+<section class="seccion infraestructura" id="infraestructura">
+
+  <h2 class="titulo-seccion">1. Infraestructura ferroviaria y señalización</h2>
+
+  <div class="contenido-seccion grid-2cols">
+
+    <!-- TEXTO -->
+    <div class="col-texto">
+      <p class="cronica-tag">Crónica 1 · Integrante: Andrés Hernández</p>
+
+      <p>
+        Todos los años mueren personas atropelladas en las vías férreas de nuestro país. 
+        Estas cifras no son conocidas públicamente y demuestran que no solo hay imprudencias 
+        del peatón involucradas, sino también fallas estructurales del sistema ferroviario chileno, 
+        como un sistema de señalización poco seguro para evitar siniestros.
+      </p>
+
+      <p>
+        Según cifras de 2017 a abril del presente año, la mayor cantidad de fallecidos en 
+        siniestros ferroviarios del tipo atropello se han producido en las regiones Metropolitana, 
+        O'Higgins y Maule, respectivamente. En estos, los dos sistemas de señalización más utilizados 
+        en sus tramos son, según la Empresa de Ferrocarriles del Estado (EFE), la 
+        <strong>Autorización de Uso de Vía (AUV)</strong> y el 
+        <strong>Control de Tráfico Centralizado (CTC)</strong>.
+      </p>
+
+      <p>
+        AUV, según la revista En Tren, es el sistema “más simple”, especialmente en la red de vías únicas. 
+        Es una comunicación entre el controlador de tráfico y el personal del tren. La autorización incluye 
+        puntos de referencia exactos (como cambios de vía o publicaciones) desde donde se extiende la autorización. 
+        El personal del tren debe repetir la información al controlador para su confirmación antes de que se autorice 
+        el movimiento del tren. <em>—EFE, 2024</em>
+      </p>
+
+      <p>
+        El CTC, según el Reglamento de Tráfico Ferroviario de EFE, posee una señalización luminosa constituida 
+        por señales absolutas y no absolutas que solamente se encienden cuando son requeridas. Cuando no son requeridas, 
+        reposan en su estado más restrictivo: luces rojas o amarillas, según corresponda. <em>—EFE, 2024</em>
+      </p>
+
+      <p>
+        Ambos sistemas presentan debilidades para prevenir atropellos. En el caso de AUV, existe una alta dependencia 
+        del error humano y falta de automatización. El sistema CTC, aunque más avanzado, opera con limitaciones técnicas 
+        relevantes, incluyendo fallas por vandalización de cables y degradación eléctrica.
+      </p>
+
+      <blockquote class="cita">
+        “La delincuencia organizada que roba impunemente catenaria y cables subterráneos del sistema de señalización 
+        obliga a emplear sistemas radiales o telefónicos que no aseguran un funcionamiento a prueba de fallas.”
+        <br><span>—Instituto Ferroviario Chileno</span>
+      </blockquote>
+    </div>
+
+    <!-- GRÁFICOS -->
+    <div class="col-graficos">
+
+      <!-- Primer gráfico -->
+      <iframe 
+        src="graficos/andres_vis1.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+      <!-- Segundo gráfico -->
+      <iframe 
+        src="graficos/andres_vis2.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- =====================================================
+     SECCIÓN 3 — PATRONES TEMPORALES Y SOCIALES
+===================================================== -->
+<section class="seccion patrones" id="patrones">
+
+  <h2 class="titulo-seccion">3. Patrones temporales y grupos más afectados</h2>
+
+  <div class="contenido-seccion grid-2cols">
+
+    <!-- TEXTO -->
+    <div class="col-texto">
+
+      <p class="cronica-tag">Crónica 3 · Integrante: Paloma Riquelme</p>
+
+      <p>
+        Los distintos cruces ferroviarios analizados —ubicados entre Estación Central y la Región 
+        de O'Higgins— operan con niveles heterogéneos de advertencia y control, lo que influye en 
+        los patrones de siniestros observados durante la última década. Aunque cada cruce tiene 
+        características propias, los datos entre 2014 y 2024 muestran tendencias repetidas que 
+        permanecen fuera de la discusión pública.
+      </p>
+
+      <p>
+        El análisis de los siniestros por edad muestra que las personas entre <strong>30 y 59 años</strong> 
+        concentran la mayor cantidad de casos. No son un grupo típicamente considerado “vulnerable”, 
+        pero su exposición cotidiana —traslados laborales, cruces frecuentes, tiempos ajustados— 
+        los ubica en una posición de riesgo constante.
+      </p>
+
+      <p>
+        Un segundo punto crítico aparece en la dimensión temporal: las franjas 
+        <strong>15:00–17:59</strong> y <strong>21:00–23:59</strong> concentran mayor incidencia de siniestros. 
+        En la tarde, el retorno laboral y escolar produce cruces apresurados en vías sin barreras automáticas 
+        ni señalización luminosa adecuada; en la noche, la visibilidad disminuye y las advertencias son 
+        menos efectivas.
+      </p>
+
+      <p>
+        Estos patrones se explican en parte por los sistemas de control presentes en la red. El AUV, dependiente 
+        de comunicación manual entre maquinista y operador, y el CTC, automatizado pero vulnerable a fallas 
+        eléctricas y vandalización de cables, presentan limitaciones documentadas por EFE y CONASET.
+      </p>
+
+      <p>
+        La combinación de imprudencia individual con infraestructura defectuosa aparece de forma transversal. 
+        Las decisiones humanas —cruzar sin mirar, evadir barreras, subestimar la velocidad del tren— se ven 
+        amplificadas cuando la señalización es poco clara, está dañada o simplemente no existe.
+      </p>
+
+      <blockquote class="cita">
+        “La seguridad ferroviaria también depende de aquello que el sistema no compensa: 
+        visibilidad, automatización y diseño del entorno.”
+      </blockquote>
+
+    </div>
+
+    <!-- GRÁFICOS -->
+    <div class="col-graficos">
+
+      <!-- Día de la semana -->
+      <iframe 
+        src="graficos/dia_semana.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+      <!-- Zona horaria -->
+      <iframe 
+        src="graficos/zona_horaria.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+      <!-- Edades -->
+      <iframe 
+        src="graficos/edades.html"
+        class="grafico-iframe"
+        loading="lazy">
+      </iframe>
+
+    </div>
+
+  </div>
+<!-- =====================================================
+     SECCIÓN 4 — METODOLOGÍA
+===================================================== -->
+<section class="seccion metodologia" id="metodologia">
+
+  <h2 class="titulo-seccion">4. Cómo hicimos este reportaje</h2>
+
+  <div class="contenido-seccion metodologia-contenido">
+
+    <p>
+      Este proyecto cruza bases de datos de siniestros ferroviarios, registros de cruces oficiales 
+      y observación en terreno. Las visualizaciones se construyeron con herramientas como 
+      <strong>Altair</strong> y <strong>Leaflet</strong>, siguiendo el criterio de mantener gráficos simples, 
+      directos y comparables para responder preguntas específicas sobre seguridad ferroviaria.
+    </p>
+
+    <p><strong>Período analizado:</strong> 2014–2024</p>
+    <p><strong>Tramo:</strong> Estación Central – límite con el Maule</p>
+    <p><strong>Unidad de análisis:</strong> Siniestros por atropello en la vía férrea</p>
+    <p><strong>Variables clave:</strong> Tipo de tramo, sistema de control, hora del día, gravedad, edad</p>
+
+    <p>
+      El objetivo fue identificar patrones invisibles para el público general y para la discusión 
+      institucional: zonas de riesgo, comportamiento temporal, vulnerabilidades técnicas y brechas 
+      en la infraestructura.
+    </p>
+
+    <!-- Botón al repositorio -->
+    <a href="https://github.com/josefamar/PROYECTO" 
+       class="btn-repo" target="_blank">
+      Ver repositorio completo en GitHub
+    </a>
+
+  </div>
+
+</section>
